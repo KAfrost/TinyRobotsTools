@@ -1,21 +1,36 @@
 ﻿@model IEnumerable<Employee>
-
-    <table>
-        <thead>
+<!--<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Department</th>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+                <td>@employee.Department</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var employee in Model)
-            {
-                <tr>
-                    <td>@employee.Id</td>
-                    <td>@employee.Name</td>
-                    <td>@employee.Department</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>-->
+
+<div class="card-deck">
+    @foreach (var employee in Model)
+    {    <div class="card m-3">
+               <div class="card-header">
+                   <h3>@employee.Name</h3>
+               </div>
+               <img class="card-img-top" src="~/images/noimage.jpg" asp-append-version="true"/>
+               <div class="card-footer text-center">
+                   <a asp-controller="home" asp-action="details" asp-route-id="@employee.Id" class="btn btn-primary m-1">View</a>
+                   <a href="#" class="btn btn-primary m-1">Edit</a>
+                   <a href="#" class="btn btn-danger m-1">Delete</a>
+               </div>
+         </div>
+    }
+</div>
