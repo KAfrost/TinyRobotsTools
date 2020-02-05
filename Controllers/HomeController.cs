@@ -17,17 +17,17 @@ namespace TinyRobotsTools.Controllers
         public HomeController(IEmployeeRepository employeeRepository)
         {
             _employeeRepository = employeeRepository;
-        }   
+        }
 
         public ViewResult Index()
         {
-            var model =  _employeeRepository.GetAllEmployees();
+            var model = _employeeRepository.GetAllEmployees();
             return View(model);
-        }   
+        }
 
         public ViewResult Details(int id)
         {
-            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel() 
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
                 Employee = _employeeRepository.GetEmployee(id),
                 PageTitle = "Employee Details"
