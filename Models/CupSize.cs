@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 
 namespace TinyRobotsTools.Models
 {
-    public enum Dept
+    public enum CupSize
     {
-        None, 
-        HR, 
-        IT,
-        Payroll
+        Twenty,
+        Thirty,
+        Fourty
     }
 }

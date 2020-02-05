@@ -12,16 +12,16 @@ namespace TinyRobotsTools.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IOrderRepository _orderRepository;
 
-        public HomeController(IEmployeeRepository employeeRepository)
+        public HomeController(IOrderRepository orderRepository)
         {
-            _employeeRepository = employeeRepository;
+            _orderRepository = orderRepository;
         }
 
         public ViewResult Index()
         {
-            var model = _employeeRepository.GetAllEmployees();
+            var model = _orderRepository.GetAllOrders();
             return View(model);
         }
 
@@ -29,8 +29,8 @@ namespace TinyRobotsTools.Controllers
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(id),
-                PageTitle = "Employee Details"
+                Order = _orderRepository.GetOrder(id),
+                PageTitle = "Order Details"
             };
             return View(homeDetailsViewModel);
         }
@@ -41,12 +41,53 @@ namespace TinyRobotsTools.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Employee employee)
+        public IActionResult Create(OrderCreateViewModel order)
         {
             if (ModelState.IsValid)
             {
-                Employee newEmployee = _employeeRepository.Add(employee);
-                return RedirectToAction("details", new { id = newEmployee.Id });
+                Order newOrder = new Order
+                {
+                    Owner = order.Owner,
+                    CupSize = order.CupSize,
+                    CupStyle = order.CupStyle,
+                    GlitterName = order.GlitterName,
+                    Status = order.Status
+                };
+                _orderRepository.Add(newOrder);
+                return RedirectToAction("details", new { id = newOrder.Id });
+            }
+            return View();
+        }
+
+        public ViewResult Edit(int id)
+        {
+            Order order = _orderRepository.GetOrder(id);
+            OrderEditViewModel orderEditViewModel = new OrderEditViewModel
+            {
+                Id = order.Id,
+                Owner = order.Owner,
+                CupSize = order.CupSize,
+                CupStyle = order.CupStyle,
+                GlitterName = order.GlitterName,
+                Status = order.Status
+            };
+            return View(orderEditViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(OrderEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                Order order = _orderRepository.GetOrder(model.Id);
+                order.Owner = model.Owner;
+                order.CupSize = model.CupSize;
+                order.CupStyle = model.CupStyle;
+                order.GlitterName = model.GlitterName;
+                order.Status = model.Status;
+          
+                _orderRepository.Update(order);
+                return RedirectToAction("index");
             }
             return View();
         }

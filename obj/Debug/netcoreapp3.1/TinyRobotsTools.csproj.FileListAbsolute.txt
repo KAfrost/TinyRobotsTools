@@ -87,3 +87,4 @@ C:\Users\Dev\lc101\TinyRobots\TinyRobotsTools\TinyRobotsTools\obj\Debug\netcorea
 C:\Users\Dev\lc101\TinyRobots\TinyRobotsTools\TinyRobotsTools\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Dev\lc101\TinyRobots\TinyRobotsTools\TinyRobotsTools\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\Dev\lc101\TinyRobots\TinyRobotsTools\TinyRobotsTools\obj\Debug\netcoreapp3.1\Razor\Views\Administration\CreateRole.cshtml.g.cs
+C:\Users\Dev\lc101\TinyRobots\TinyRobotsTools\TinyRobotsTools\obj\Debug\netcoreapp3.1\Razor\Views\Home\Edit.cshtml.g.cs

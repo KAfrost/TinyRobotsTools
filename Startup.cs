@@ -27,13 +27,9 @@ namespace TinyRobotsTools
             
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmployeeDBConnection")));
             services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
-            services.AddMvc(options =>
-            {
-                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-                options.Filters.Add(new AuthorizeFilter(policy));
-            }).AddXmlSerializerFormatters();
+            services.AddMvc();
             services.AddControllersWithViews();
-            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
+            services.AddScoped<IOrderRepository, SQLOrderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

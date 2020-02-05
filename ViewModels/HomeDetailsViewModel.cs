@@ -8,7 +8,7 @@ namespace TinyRobotsTools.ViewModels
 {
     public class HomeDetailsViewModel
     {
-        public Employee Employee { get; set; }
+        public Order Order { get; set; }
 
         public string PageTitle { get; set; }
 
