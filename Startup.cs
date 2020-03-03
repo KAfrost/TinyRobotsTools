@@ -26,7 +26,7 @@ namespace TinyRobotsTools
         {
 
             services.AddDbContextPool<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("EmployeeDBConnection")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddMvc();
             services.AddControllersWithViews();
             services.AddScoped<IOrderRepository, SQLOrderRepository>();
