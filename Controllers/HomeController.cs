@@ -91,5 +91,16 @@ namespace TinyRobotsTools.Controllers
             }
             return View();
         }
+
+       /* public ViewResult Delete(int id)
+        {
+            Order order = _orderRepository.GetOrder(id);
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
+            {
+                _orderRepository.Delete(order);
+                return RedirectToAction("index");
+            }
+            return View(homeDetailsViewModel);
+        }*/
     }
 }

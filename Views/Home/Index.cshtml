@@ -1,12 +1,13 @@
 ﻿@model IEnumerable<Order>
 
-<div class="card-deck">
+<div class="table">
     @foreach (var order in Model)
-    {    <div class="card m-3">
-               <div class="card-header">
+    {    <div class="table">
+               <div class="table">
                    <h3>@order.Owner</h3>
+                   <h6>@order.Status</h6>
                </div>
-               <div class="card-footer text-center">
+               <div class="table">
                    <a asp-controller="home" asp-action="details" asp-route-id="@order.Id" class="btn btn-primary m-1">View</a>
                    <a asp-controller="home" asp-action="edit" asp-route-id="@order.Id" class="btn btn-primary m-1">Edit</a>
                    <a href="#" class="btn btn-danger m-1">Delete</a>

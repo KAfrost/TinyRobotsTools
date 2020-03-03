@@ -7,15 +7,22 @@ namespace TinyRobotsTools.Models
 {
     public enum GlitterName
     {
-        silver,
-        red,
-        blue,
-        orange,
-        green,
-        yellow,
-        purple,
-        pink,
-        teal
-
+        Silver,
+        Cherry,
+        Royal,
+        Tangelo,
+        Emerald,
+        Malificent,
+        Rose,
+        Teal,
+        Black,
+        Gold,
+        Aqua,
+        Cinnamon,
+        Magnolia,
+        Hummingbird,
+        Bronze,
+        Highlighter,
+        Rainbow
     }
 }
