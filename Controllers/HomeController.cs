@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using TinyRobotsTools.Models;
@@ -25,6 +26,7 @@ namespace TinyRobotsTools.Controllers
             return View(model);
         }
 
+        [Authorize]
         public ViewResult Details(int id)
         {
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
@@ -34,13 +36,14 @@ namespace TinyRobotsTools.Controllers
             };
             return View(homeDetailsViewModel);
         }
-
+        [Authorize]
         public ViewResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(OrderCreateViewModel order)
         {
             if (ModelState.IsValid)
@@ -58,7 +61,7 @@ namespace TinyRobotsTools.Controllers
             }
             return View();
         }
-
+        [Authorize]
         public ViewResult Edit(int id)
         {
             Order order = _orderRepository.GetOrder(id);
@@ -75,6 +78,7 @@ namespace TinyRobotsTools.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Edit(OrderEditViewModel model)
         {
             if (ModelState.IsValid)
@@ -91,8 +95,9 @@ namespace TinyRobotsTools.Controllers
             }
             return View();
         }
-
-       /* public ViewResult Delete(int id)
+       /* [HttpPost]
+        [Authorize]
+        public ViewResult Delete(int id)
         {
             Order order = _orderRepository.GetOrder(id);
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
