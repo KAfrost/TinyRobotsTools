@@ -7,19 +7,25 @@ namespace TinyRobotsTools.Models
 {
     public class IInventoryControl
     {
-        public int AddInventory()
+        public int AddInventory(int inventory, int addToStock)
         {
-            return 0;
+            return inventory + addToStock;
         }
 
-        public int RemoveInventory()
+        public int RemoveInventory(int inventory, int removeFromStock)
         {
-            return 0;
+            return inventory - removeFromStock;
         }
 
-        public bool IsInStock()
+        public bool IsInStock(int inventory)
         {
-            return true;
+            if (inventory > 0) {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
