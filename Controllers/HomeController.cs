@@ -12,6 +12,7 @@ using TinyRobotsTools.ViewModels;
 namespace TinyRobotsTools.Controllers
 {
     public class HomeController : Controller
+
     {
         private readonly IOrderRepository _orderRepository;
 
@@ -89,23 +90,35 @@ namespace TinyRobotsTools.Controllers
                 order.CupStyle = model.CupStyle;
                 order.GlitterName = model.GlitterName;
                 order.Status = model.Status;
-          
+
                 _orderRepository.Update(order);
                 return RedirectToAction("index");
             }
             return View();
         }
-       /* [HttpPost]
+        [HttpPost]
         [Authorize]
         public ViewResult Delete(int id)
+        {
+            //Order order = _orderRepository.GetOrder(id);
+            HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel();
+            var order = _orderRepository.Delete(id);
+            //  return RedirectToAction("index")
+            return View(homeDetailsViewModel);
+        }
+
+        /*public ViewResult Delete(int id)
         {
             Order order = _orderRepository.GetOrder(id);
             HomeDetailsViewModel homeDetailsViewModel = new HomeDetailsViewModel()
             {
                 _orderRepository.Delete(order);
                 return RedirectToAction("index");
-            }
+
+        }
             return View(homeDetailsViewModel);
-        }*/
+    }*/
     }
 }
+
+

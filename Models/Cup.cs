@@ -27,7 +27,7 @@ namespace TinyRobotsTools.Models
             nextId++;
         }
 
-        public Cup (string size, string style, double retailPrice, double wholesalePrice bool instock, int quantity) : this()
+        public Cup (string size, string style, double retailPrice, double wholesalePrice, bool instock, int quantity) : this()
         {
             CupSize = size;
             CupStyle = style;

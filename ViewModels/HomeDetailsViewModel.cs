@@ -9,6 +9,7 @@ namespace TinyRobotsTools.ViewModels
     public class HomeDetailsViewModel
     {
         public Order Order { get; set; }
+        public int OrderId { get; set; }
 
         public string PageTitle { get; set; }
 
